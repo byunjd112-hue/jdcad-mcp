@@ -1,0 +1,10 @@
+{
+  "name": "jdcad-mcp",
+  "version": "0.3.0",
+  "description": "JDCAD MCP server: KS 2D mechanical/electrical drawings from JSON spec to AutoCAD DXF",
+  "main": "server.js",
+  "bin": { "jdcad-mcp": "server.js" },
+  "scripts": { "start": "node server.js", "http": "node server.js --http 8787" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED"
+}

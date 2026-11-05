@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: jdcad-mcp
+    runtime: node
+    plan: free
+    buildCommand: "echo no build"
+    startCommand: "node server.js --http"
+    envVars:
+      - key: JDCAD_SECRET
+        generateValue: true
