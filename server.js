@@ -118,7 +118,7 @@ if (HTTP_MODE) {
   const mpath = '/mcp' + (process.env.JDCAD_SECRET ? '/' + process.env.JDCAD_SECRET : ''); // claude.ai 커넥터용 비밀 주소
   http.createServer((req, res) => {
     if (req.method === 'GET' && req.url === '/') { res.end('JDCAD MCP ' + VERSION); return; }
-    if (req.url.split('?')[0] !== mpath) { res.writeHead(404).end(); return; }
+    let up = req.url.split('?')[0]; try { up = decodeURIComponent(up); } catch {} if (up.replace(/\/+$/, '') !== mpath) { res.writeHead(404).end(); return; }
     if (req.method !== 'POST') { res.writeHead(405, { Allow: 'POST' }).end(); return; }
     if (token && req.headers.authorization !== 'Bearer ' + token) { res.writeHead(401).end(); return; }
     let body = ''; req.on('data', c => body += c); req.on('end', () => {
